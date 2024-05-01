@@ -14,6 +14,3 @@ class VendorSerializer(serializers.ModelSerializer):
         vendor.vendor_code = 'VC{:02d}'.format(vendor.id)
         vendor.save()
         return vendor
-
-
-
