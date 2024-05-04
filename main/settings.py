@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
-    'vendor_management',
+    'vendor_management.apps.VendorManagementConfig',
 ]
 
 MIDDLEWARE = [
