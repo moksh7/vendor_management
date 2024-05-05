@@ -1,6 +1,7 @@
 from django.utils import timezone
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from vendor_management.models import PurchaseOrder
@@ -11,6 +12,7 @@ from vendor_management.signals import metric_update
 
 class PODetailUpdate(GenericAPIView):
     serializer_class = POUpdateSerializer
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, po_id):
         '''
@@ -48,6 +50,7 @@ class PODetailUpdate(GenericAPIView):
 
 
 class AckPO(GenericAPIView):
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, po_id):
         po = PurchaseOrder.objects.filter(id=po_id).first()
