@@ -1,5 +1,6 @@
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from vendor_management.models import Vendor
@@ -8,6 +9,7 @@ from vendor_management.serializers import VendorSerializer
 
 class VendorListCreateView(GenericAPIView):
     serializer_class = VendorSerializer
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         '''

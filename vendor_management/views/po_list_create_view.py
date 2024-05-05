@@ -1,5 +1,6 @@
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from vendor_management.models import PurchaseOrder
@@ -9,6 +10,7 @@ from vendor_management.serializers import PurchaseOrderCreateSerializer, POListS
 
 class POCreateView(GenericAPIView):
     serializer_class = PurchaseOrderCreateSerializer
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         '''
